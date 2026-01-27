@@ -1,5 +1,5 @@
-const BOT_TOKEN = "8119956447:AAETYb4RgEuhll5J4SX4LsK24saiKm8NrJ0";
-const CHAT_ID = "5432088118";
+const BOT_TOKEN = "actual bot token";
+const CHAT_ID = "actual chat id";
 
 document.getElementById("messageForm").addEventListener("submit", function (e) {
   e.preventDefault();
