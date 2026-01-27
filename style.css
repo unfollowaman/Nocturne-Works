@@ -140,3 +140,53 @@ footer {
   text-align: center;
   font-size: 14px;
 }
+/* Tweets section */
+.tweets-section {
+  margin-top: 16px;
+}
+
+.tweets-section h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Vertical scroll container */
+.tweets-vertical {
+  max-height: 420px;               /* controls visible area */
+  overflow-y: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  size: 20px;
+  scroll-snap-type: y mandatory;
+  padding-right: 0px;
+}
+
+/* Hide scrollbar */
+.tweets-vertical::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tweet image */
+.tweet {
+  width: 7%;
+  size: 7px;
+  border-radius: 16px;
+  border: 3px solid #fff;
+  scroll-snap-align: start;
+}
+
+
+/* Tweet images in scroll container */
+.tweets-scroll img {
+  width: 260px;  /* Change this value to resize */
+  height: auto;
+  border-radius: 16px;
+  margin-right: 10px;
+}
+/* Activated when visible */
+.tweet.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
