@@ -1,6 +1,33 @@
-## Snake (the game itself)
+Aman — Personal Website
 
-Snake is a game in which a snake needs to explore an environment and catch the fruit without hitting any obstacle or itself. Every time the snake catches a fruit, its size increases.
+A minimal, single-page personal website designed as a quiet signal rather than a loud portfolio.
 
-- [Coding "Snake" in 4 min 30 sec](https://www.youtube.com/watch?v=xGmXxpIj6vs)
-- [Mastering the Module Pattern](https://toddmotto.com/mastering-the-module-pattern/) (not really about Snake itself, but a pattern I tried to follow on the project)
+Features
+• Telegram-based messaging (instant delivery)
+• Expandable About & Experience sections
+• External redirects for Blogs and Portfolio
+• Scrollable archive of best tweets (images)
+• Mobile-first, static design
+
+Tech Stack
+HTML, CSS, Vanilla JavaScript, Telegram Bot API
+
+How Messaging Works
+Messages typed on the website are sent directly to Telegram using a bot. No email, no database,
+no backend.
+
+Project Structure
+index.html
+style.css
+script.js
+moon.jpg
+tweets/
+
+Design Philosophy
+Quiet. Personal. Direct. Built to signal, not to shout.
+
+Deployment
+Hostable on GitHub Pages, Netlify, Vercel, or any static host.
+
+License
+© Aman
