@@ -240,36 +240,6 @@ line {
   border-bottom: 1px dashed #FFD966;
 }
 
-/* Tweets Section */
-.tweets-section {
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 40px;
-  z-index: 10;
-}
-
-.tweets-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  padding-bottom: 10px;
-  scroll-snap-type: x mandatory;
-}
-.tweets-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-.tweets-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.2);
-  border-radius: 3px;
-}
-.tweets-scroll img {
-  height: 200px;
-  border-radius: 8px;
-  border: 2px solid rgba(255,255,255,0.8);
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-  scroll-snap-align: start;
-}
-
 /* Contact Section */
 .contact-section {
   width: 100%;
