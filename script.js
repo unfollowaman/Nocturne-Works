@@ -65,15 +65,47 @@ function updateConnections() {
       targetY = btnRect.top + btnRect.height / 2;
     }
 
-    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', heroX);
-    line.setAttribute('y1', heroY + scrollY);
-    line.setAttribute('x2', targetX);
-    line.setAttribute('y2', targetY + scrollY);
+    // Create cubic bezier curve for the rope
+    const startX = heroX;
+    const startY = heroY + scrollY;
+    const endX = targetX;
+    const endY = targetY + scrollY;
 
-    // Slight random bow/curve by making it a polyline or path could be done,
-    // but a straight dashed line looks good for stretched thread too.
-    svg.appendChild(line);
+    // Control points for a slight natural droop
+    const midX = (startX + endX) / 2;
+    const droop = 30; // amount of droop in pixels
+    const cp1X = startX + (endX - startX) * 0.25;
+    const cp1Y = startY + (endY - startY) * 0.25 + droop;
+    const cp2X = startX + (endX - startX) * 0.75;
+    const cp2Y = startY + (endY - startY) * 0.75 + droop;
+
+    const pathD = `M ${startX} ${startY} C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${endX} ${endY}`;
+
+    // Create shadow layer
+    const shadowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    shadowPath.setAttribute('d', pathD);
+    shadowPath.setAttribute('class', 'rope-shadow');
+    svg.appendChild(shadowPath);
+
+    // Create base layer
+    const basePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    basePath.setAttribute('d', pathD);
+    basePath.setAttribute('class', 'rope-base');
+    svg.appendChild(basePath);
+
+    // Create highlight layer
+    const highlightPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    highlightPath.setAttribute('d', pathD);
+    highlightPath.setAttribute('class', 'rope-highlight');
+    svg.appendChild(highlightPath);
+
+    // Create knot at the pin
+    const knot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    knot.setAttribute('cx', endX);
+    knot.setAttribute('cy', endY);
+    knot.setAttribute('r', '5'); // 10px diameter
+    knot.setAttribute('class', 'rope-knot');
+    svg.appendChild(knot);
   });
 
   // Connect name label if it exists
@@ -82,12 +114,48 @@ function updateConnections() {
     const pin = nameLabel.querySelector('.pin');
     if (pin) {
       const pinRect = pin.getBoundingClientRect();
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', heroX);
-      line.setAttribute('y1', heroY + scrollY);
-      line.setAttribute('x2', pinRect.left + pinRect.width / 2);
-      line.setAttribute('y2', pinRect.top + pinRect.height / 2 + scrollY);
-      svg.appendChild(line);
+      const targetX = pinRect.left + pinRect.width / 2;
+      const targetY = pinRect.top + pinRect.height / 2 + scrollY;
+
+      const startX = heroX;
+      const startY = heroY + scrollY;
+      const endX = targetX;
+      const endY = targetY;
+
+      const midX = (startX + endX) / 2;
+      const droop = 30;
+      const cp1X = startX + (endX - startX) * 0.25;
+      const cp1Y = startY + (endY - startY) * 0.25 + droop;
+      const cp2X = startX + (endX - startX) * 0.75;
+      const cp2Y = startY + (endY - startY) * 0.75 + droop;
+
+      const pathD = `M ${startX} ${startY} C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${endX} ${endY}`;
+
+      // Create shadow layer
+      const shadowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      shadowPath.setAttribute('d', pathD);
+      shadowPath.setAttribute('class', 'rope-shadow');
+      svg.appendChild(shadowPath);
+
+      // Create base layer
+      const basePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      basePath.setAttribute('d', pathD);
+      basePath.setAttribute('class', 'rope-base');
+      svg.appendChild(basePath);
+
+      // Create highlight layer
+      const highlightPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      highlightPath.setAttribute('d', pathD);
+      highlightPath.setAttribute('class', 'rope-highlight');
+      svg.appendChild(highlightPath);
+
+      // Create knot at the pin
+      const knot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      knot.setAttribute('cx', endX);
+      knot.setAttribute('cy', endY);
+      knot.setAttribute('r', '5');
+      knot.setAttribute('class', 'rope-knot');
+      svg.appendChild(knot);
     }
   }
 
