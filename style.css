@@ -6,7 +6,7 @@ body, html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #1a1a1a;
+  background-color: #777777;
   color: #fff;
   font-family: 'Caveat', cursive; /* Default to handwritten */
   overflow-x: hidden;
@@ -17,12 +17,14 @@ body, html {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background-color: #1a1a1a;
+  background-color: #777777;
   background-image:
-    radial-gradient(circle at top center, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg viewBox=%270 0 200 200%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27noiseFilter%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.65%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23noiseFilter)%27 opacity=%270.15%27/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.35) 0%, rgba(120,120,120,0) 60%),
+
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 40px 40px, 40px 40px;
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,11 +43,30 @@ body, html {
   z-index: 2;
 }
 
-line {
+.rope-shadow {
+  stroke: #7B0000;
+  stroke-width: 8px;
+  fill: none;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
+}
+
+.rope-base {
   stroke: #C62828;
-  stroke-width: 2.5;
-  stroke-dasharray: 5, 2; /* Slight dashed/thread look */
-  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));
+  stroke-width: 6px;
+  fill: none;
+}
+
+.rope-highlight {
+  stroke: #FF5252;
+  stroke-width: 2px;
+  fill: none;
+  transform: translate(-1px, -1px);
+}
+
+.rope-knot {
+  fill: #7B0000;
+  stroke: #C62828;
+  stroke-width: 1px;
 }
 
 /* Hero Centerpiece */
@@ -67,6 +88,7 @@ line {
   background-clip: text;
   letter-spacing: 5px;
   filter: drop-shadow(4px 4px 10px rgba(0,0,0,0.8));
+  text-shadow: 0px -1px 1px rgba(255,255,255,0.8), 0px 1px 0px #1a0a2e, 0px 2px 0px #1a0a2e, 0px 3px 0px #1a0a2e, 0px 4px 0px #1a0a2e, 0px 5px 0px #1a0a2e, 0px 6px 0px #1a0a2e, 0px 7px 0px #1a0a2e, 0px 8px 0px #1a0a2e;
   /* Fallback color if background-clip isn't supported */
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
 }
@@ -102,7 +124,7 @@ line {
 .sticky-note {
   position: relative;
   background-color: #FFD966;
-  color: #3E2723;
+  color: #2c2c2c;
   padding: 25px 15px 15px;
   box-shadow: 3px 5px 10px rgba(0,0,0,0.4);
   font-family: 'Caveat', cursive;
@@ -138,6 +160,22 @@ line {
   transform: rotate(4deg) !important; /* Keep rotation */
   box-shadow: 3px 5px 10px rgba(0,0,0,0.4);
 }
+#btn-about {
+  background-color: #90CAF9;
+}
+
+#btn-blogs {
+  background-color: #F48FB1;
+}
+
+#btn-experience {
+  background-color: #FFD54F;
+}
+
+#btn-portfolio {
+  background-color: #A5D6A7;
+}
+
 .name-label h2 {
   margin: 5px 0 0;
   font-family: 'Caveat', cursive;
